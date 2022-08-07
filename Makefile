@@ -2,10 +2,10 @@ createdb:
 	createdb --username=postgres --owner=postgres go_finance
 
 postgres:
-	docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres:14-alpine 
+	docker run --name myPostgresDb -p 5455:5455 -e POSTGRES_PASSWORD=abc300183 -d postgres:14-alpine 
 
 migrateup:
-	migrate -path db/migration -database "postgresql://postgres:postgres@localhost:5432/go_finance?sslmode=disable" -verbose up
+	migrate -path db/migration -database "postgresql://postgres:postgres@localhost:5455/soacheiofertas?sslmode=disable" -verbose up
 
 migrationdrop:
 	migrate -path db/migration -database "postgresql://postgres:postgres@localhost:5432/go_finance?sslmode=disable" -verbose down
